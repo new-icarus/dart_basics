@@ -1,29 +1,21 @@
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  final names = ['John', 'Jane', 'Matthew'];
+  bool isSignedIn = true;
+  <String>[
+    'This is a fake content.',
+    if (isSignedIn) 'Sign Out' else 'Sign In',
+  ];
 
-  final nameLengths =
-      names.map((name) => name.length).toList(); //not a list, but a iterable
-  print(nameLengths[0]);
+  final x = <String>[
+    for (int i = 0; i < 5; i++) i.toString(),
+    for (final number in [1, 2, 3]) number.toString(),
+  ];
+  print(x);
 
-  final namesFiltered = names
-      .where((name) => name.length == 4)
-      .toList(); //evaluates to true or false
-  print(namesFiltered);
+  final list1 = ['hello', 'there'];
+  final list2 = ['what', 'up'];
+  final listFinal = <String>[...list1, ...list2];
 
-  //collection iteration
-  for (var i = 0; i < namesFiltered.length; i++) {
-    print(namesFiltered[i]);
-  }
-
-  for (final name in namesFiltered) {
-    print(name);
-  }
-
-  namesFiltered.forEach((name) {
-    print(name);
-  });
-
-  namesFiltered.forEach(print);
+  print(listFinal);
 }

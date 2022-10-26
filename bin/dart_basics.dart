@@ -1,30 +1,29 @@
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  List myList = [1, 2, 3];
-  print(myList.length);
+  final names = ['John', 'Jane', 'Matthew'];
 
-  final firstElement = myList[0]; //dynamic type because list default
-  print(firstElement);
+  final nameLengths =
+      names.map((name) => name.length).toList(); //not a list, but a iterable
+  print(nameLengths[0]);
 
-  List<int> myIntList = [1, 2, 3];
-  final intElement = myIntList[0]; //int type
-  print(intElement);
+  final namesFiltered = names
+      .where((name) => name.length == 4)
+      .toList(); //evaluates to true or false
+  print(namesFiltered);
 
-  final myList3 = [1, 2, 3]; //int list by type inference
-  final myList4 = [1, 2, 3, 'hello']; //object type by type inference
+  //collection iteration
+  for (var i = 0; i < namesFiltered.length; i++) {
+    print(namesFiltered[i]);
+  }
 
-  <int>[1, 2, 3]; //list literal
+  for (final name in namesFiltered) {
+    print(name);
+  }
 
-  Map<String, dynamic> myMap = {
-    //JSON style
-    'name': 'John Doe',
-    'age': 42,
-    'registered': true,
-  };
-  final name = myMap['name'];
-  print(name);
+  namesFiltered.forEach((name) {
+    print(name);
+  });
 
-  Set<int> mySet = {1, 2, 3, 2}; //non-duplicated values
-  print(mySet.length);
+  namesFiltered.forEach(print);
 }

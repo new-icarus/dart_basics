@@ -1,21 +1,22 @@
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
+enum AccountType { free, premium, vip }
+
 void main(List<String> arguments) {
-  bool isSignedIn = true;
-  <String>[
-    'This is a fake content.',
-    if (isSignedIn) 'Sign Out' else 'Sign In',
-  ];
+  final userAccountType = AccountType.premium; //infered AccountType count
+  print(userAccountType.index);
 
-  final x = <String>[
-    for (int i = 0; i < 5; i++) i.toString(),
-    for (final number in [1, 2, 3]) number.toString(),
-  ];
-  print(x);
+  print(AccountType.values[2]);
 
-  final list1 = ['hello', 'there'];
-  final list2 = ['what', 'up'];
-  final listFinal = <String>[...list1, ...list2];
-
-  print(listFinal);
+  switch (userAccountType) {
+    case AccountType.free:
+      print('0 USD');
+      break;
+    case AccountType.premium:
+      print('20 USD');
+      break;
+    case AccountType.vip:
+      print('40 USD');
+      break;
+  }
 }

@@ -1,22 +1,34 @@
 void main(List<String> args) {
-  final x = Example(1, 2);
-  x._private;
-
-  //package(files) private field
-  //class private fields can be accessed in the entire file they are declared
+  final user = User(firstName: 'John', lastName: 'Doe', email: 'cool beans');
+  print(user.fullName);
+  print(user.email);
 }
 
-class Example {
-  int public;
-  int _private;
+class User {
+  final String firstName;
+  final String lastName;
+  String? _email;
 
-  Example(this.public, this._private);
-  Example.namedConstructor({
-    required this.public,
-    required int privateParamether,
-  }) : _private = privateParamether;
+  User({
+    required this.firstName,
+    required this.lastName,
+    required String email,
+  }) {
+    this.email = email;
+  }
 
-  void myMethod() {
-    _private;
+//properties - 'light work methods'
+//get - get values out
+//set - pass values in
+  String get fullName => '$firstName $lastName';
+
+  String get email => _email ?? 'Email not present';
+
+  set email(String value) {
+    if (value.contains('@')) {
+      _email = value;
+    } else {
+      _email = null;
+    }
   }
 }

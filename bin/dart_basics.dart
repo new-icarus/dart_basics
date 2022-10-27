@@ -1,24 +1,22 @@
-import 'package:dart_basics/dart_basics.dart' as dart_basics;
+void main(List<String> args) {
+  final x = Example(1, 2);
+  x._private;
 
-enum AccountType { free, premium, vip }
-
-void main(List<String> arguments) {
-  User(name: 'a', photoUrl: 'b').hasLongName();
-  User.myMethod();
-  User.minNameLength;
+  //package(files) private field
+  //class private fields can be accessed in the entire file they are declared
 }
 
-class User {
-  final String name;
-  final String photoUrl;
+class Example {
+  int public;
+  int _private;
 
-  const User({required this.name, required this.photoUrl});
+  Example(this.public, this._private);
+  Example.namedConstructor({
+    required this.public,
+    required int privateParamether,
+  }) : _private = privateParamether;
 
-  bool hasLongName() {
-    return name.length > 10;
+  void myMethod() {
+    _private;
   }
-
-  static void myMethod() {}
-
-  static const minNameLength = 3;
 }
